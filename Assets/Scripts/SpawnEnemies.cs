@@ -7,6 +7,7 @@ public class SpawnEnemies : MonoBehaviour
 	[SerializeField] GameObject enemy;
 	[SerializeField] float delayMax;
 	[SerializeField] float delayMin;
+	[SerializeField] float spawnDistance;
 	float timer;
 
 	// Update is called once per frame
@@ -16,7 +17,7 @@ public class SpawnEnemies : MonoBehaviour
 		else
 		{
 			Vector3 position = new Vector3 (Random.Range(-1f,1f),Random.Range(-1f,1f)).normalized;
-			Instantiate(enemy, position * 8, Quaternion.identity, transform);
+			Instantiate(enemy, position * spawnDistance, Quaternion.identity, transform);
 
 			timer = Random.Range(delayMax,delayMin);
 		}

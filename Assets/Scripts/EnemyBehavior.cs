@@ -11,7 +11,7 @@ public class EnemyBehavior : MonoBehaviour
 	// Use this for initialization
 	void Start () {
 
-		target = GameObject.Find("Base");
+		target = GameObject.Find("Station");
 
 		transform.rotation = Quaternion.identity;
 		transform.LookAt(target.transform);
