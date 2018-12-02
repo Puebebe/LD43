@@ -603,7 +603,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1171176346
 GameObject:
@@ -692,7 +692,7 @@ RectTransform:
   m_Children:
   - {fileID: 766507267}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -783,7 +783,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1856249131
 GameObject:
@@ -1019,7 +1019,7 @@ SphereCollider:
   m_GameObject: {fileID: 1989381540}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -1078,7 +1078,7 @@ Transform:
   - {fileID: 540597521}
   - {fileID: 734350077}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2102705623
 GameObject:
@@ -1089,8 +1089,9 @@ GameObject:
   m_Component:
   - component: {fileID: 2102705624}
   - component: {fileID: 2102705625}
+  - component: {fileID: 2102705626}
   m_Layer: 0
-  m_Name: StationRotator
+  m_Name: StationManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1107,7 +1108,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2102705625
 MonoBehaviour:
@@ -1121,4 +1122,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   station: {fileID: 1989381540}
+  joystick: {fileID: 766507268}
+--- !u!114 &2102705626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2102705623}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ce67085ad80b7a41b77633c00800515, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hangar: {fileID: 734350076}
   joystick: {fileID: 766507268}
