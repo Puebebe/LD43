@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class AlliedFighterCreator : MonoBehaviour
 {
-    //[SerializeField] GameObject hangar;
+    [SerializeField] GameObject station;
+    [SerializeField] GameObject hangarManager;
     [SerializeField] Joystick joystick;
+    [SerializeField] GameObject prefab;
     float timer;
     float delay;
 
@@ -26,13 +28,14 @@ public class AlliedFighterCreator : MonoBehaviour
 
             if (touch.phase == TouchPhase.Stationary && joystick.Direction != Vector2.zero)
             {
-                GameObject fighter = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-                //fighter.transform.SetParent(hangar.transform);
-                
+                var parent = hangarManager.transform;
+                GameObject fighter = Instantiate(prefab, parent.position, station.transform.rotation, parent);
+                fighter.transform.Rotate(Vector3.right, 90);
+
                 fighter.AddComponent<Rigidbody>();
                 var rb = fighter.GetComponent<Rigidbody>();
                 rb.useGravity = false;
-                fighter.GetComponent<Collider>().isTrigger = true;
+                //fighter.GetComponent<Collider>().isTrigger = true;
                 rb.AddForce(new Vector3(joystick.Direction.x, joystick.Direction.y).normalized * 100);
                 
                 timer = delay;
