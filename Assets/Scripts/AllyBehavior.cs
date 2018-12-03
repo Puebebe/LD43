@@ -6,7 +6,8 @@ public class AllyBehavior : MonoBehaviour
 {
     [SerializeField] GameObject enemy;
     [SerializeField] float destroyDistance;
-	
+    [SerializeField] GameObject prefab;
+    //[SerializeField] GameObject explosions;
 	// Update is called once per frame
 	void Update ()
     {
@@ -18,6 +19,9 @@ public class AllyBehavior : MonoBehaviour
     {
         if (other.name == enemy.name)
         {
+            GameObject explosion = Instantiate(prefab, transform.position, Quaternion.identity);
+            explosion.transform.Rotate(Vector3.forward, Random.Range(-180,180));
+            Destroy(explosion, 3);
             Destroy(other.gameObject);
             Destroy(gameObject);
         }
