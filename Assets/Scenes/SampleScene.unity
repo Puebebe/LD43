@@ -885,8 +885,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1989381540}
   prefab: {fileID: 1229167954218662, guid: b1ec768b7625a43f9aa5f08672422be9, type: 2}
-  delayMax: 1
   delayMin: 0.8
+  delayMax: 1
   spawnDistance: 20
 --- !u!4 &1584021425
 Transform:
@@ -1511,3 +1511,4 @@ MonoBehaviour:
   joystick: {fileID: 766507268}
   prefab: {fileID: 1513236020168944, guid: 1963f9119f7c6244f94b8aabec58ae7a, type: 2}
   speed: 200
+  cost: 6

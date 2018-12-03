@@ -9,6 +9,7 @@ public class AlliedFighterCreator : MonoBehaviour
     [SerializeField] Joystick joystick;
     [SerializeField] GameObject prefab;
 	[SerializeField] float speed;
+    [SerializeField] float cost;
     float timer;
     float delay;
 
@@ -36,7 +37,8 @@ public class AlliedFighterCreator : MonoBehaviour
                 var rb = fighter.AddComponent<Rigidbody>();
                 rb.useGravity = false;
                 rb.AddForce(new Vector3(joystick.Direction.x, joystick.Direction.y).normalized * speed);
-                
+
+                EnergyBarBehavior.Energy -= cost; 
                 timer = delay;
             }
         }
