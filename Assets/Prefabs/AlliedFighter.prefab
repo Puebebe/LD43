@@ -172,7 +172,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13b871af96d60924392359ba5f00d575, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 1229167954218662, guid: b1ec768b7625a43f9aa5f08672422be9, type: 2}
+  enemy: {fileID: 1079089815912220, guid: f0398d31e729c41ea8fd07ca898d28e1, type: 2}
   destroyDistance: 20
 --- !u!212 &212539876907553104
 SpriteRenderer:
