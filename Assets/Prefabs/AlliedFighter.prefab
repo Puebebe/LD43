@@ -36,6 +36,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4873569150900532}
+  - component: {fileID: 64654978582559610}
+  - component: {fileID: 114629850504126730}
   m_Layer: 0
   m_Name: AlliedFighter
   m_TagString: Untagged
@@ -64,7 +66,7 @@ Transform:
   m_GameObject: {fileID: 1513236020168944}
   m_LocalRotation: {x: 0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.6, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.1, y: 0.1, z: 0.1}
   m_Children:
   - {fileID: 4249326044095106}
   m_Father: {fileID: 0}
@@ -115,3 +117,30 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1054752182830272}
   m_Mesh: {fileID: 4300000, guid: 6fe4e6df33f69a742be82a61ec6eb8a2, type: 3}
+--- !u!64 &64654978582559610
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513236020168944}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: 6fe4e6df33f69a742be82a61ec6eb8a2, type: 3}
+--- !u!114 &114629850504126730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1513236020168944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 13b871af96d60924392359ba5f00d575, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy: {fileID: 1229167954218662, guid: b1ec768b7625a43f9aa5f08672422be9, type: 2}
+  destroyDistance: 20

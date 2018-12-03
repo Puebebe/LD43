@@ -19,9 +19,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4952663511599026}
-  - component: {fileID: 114829809648230832}
   - component: {fileID: 23060830963657438}
   - component: {fileID: 33830448081378106}
+  - component: {fileID: 64543895683654548}
+  - component: {fileID: 114829809648230832}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -84,6 +85,20 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1229167954218662}
   m_Mesh: {fileID: 4300000, guid: bb966baf21bb4684283fc5b12efe11fc, type: 3}
+--- !u!64 &64543895683654548
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1229167954218662}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Convex: 1
+  m_CookingOptions: 14
+  m_SkinWidth: 0.01
+  m_Mesh: {fileID: 4300000, guid: bb966baf21bb4684283fc5b12efe11fc, type: 3}
 --- !u!114 &114829809648230832
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,4 +112,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   damage: 30
-  step: 0.02
+  speed: 1

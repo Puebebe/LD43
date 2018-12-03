@@ -8,6 +8,7 @@ public class AlliedFighterCreator : MonoBehaviour
     [SerializeField] GameObject hangarManager;
     [SerializeField] Joystick joystick;
     [SerializeField] GameObject prefab;
+	[SerializeField] float speed;
     float timer;
     float delay;
 
@@ -32,16 +33,12 @@ public class AlliedFighterCreator : MonoBehaviour
                 GameObject fighter = Instantiate(prefab, parent.position, station.transform.rotation, parent);
                 fighter.transform.Rotate(Vector3.right, 90);
 
-                fighter.AddComponent<Rigidbody>();
-                var rb = fighter.GetComponent<Rigidbody>();
+                var rb = fighter.AddComponent<Rigidbody>();
                 rb.useGravity = false;
-                //fighter.GetComponent<Collider>().isTrigger = true;
-                rb.AddForce(new Vector3(joystick.Direction.x, joystick.Direction.y).normalized * 100);
+                rb.AddForce(new Vector3(joystick.Direction.x, joystick.Direction.y).normalized * speed);
                 
                 timer = delay;
             }
         }
 	}
-
-    
 }
