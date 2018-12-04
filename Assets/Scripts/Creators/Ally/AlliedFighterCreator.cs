@@ -16,6 +16,9 @@ public class AlliedFighterCreator : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
     {
+        if (!Game.IsOn)
+            return;
+
         if (timer > 0)
             timer -= Time.deltaTime;
         else if (Input.touchCount > 0)

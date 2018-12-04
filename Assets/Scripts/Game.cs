@@ -8,13 +8,17 @@ using UnityEngine.UI;
 public class Game : MonoBehaviour
 {
     static bool isOn = false;
+    static bool isEnded = false;
     static event Action GameEnded;
     [SerializeField] GameObject enemies;
     [SerializeField] GameObject allies;
     [SerializeField] GameObject stationSprite;
     [SerializeField] GameObject stationExplosion;
-    [SerializeField] Text scoreUI;
-    static float score = 0f;
+    [SerializeField] GameObject scoreUI;
+    [SerializeField] GameObject bestScoreUI;
+    [SerializeField] GameObject energyBarUI;
+    int score = 0;
+    int bestScore;
     float scoreDelay = 0.1f;
     float timer;
     int cameraZoomStart = 2;
@@ -25,7 +29,7 @@ public class Game : MonoBehaviour
         get { return isOn; }
     }
 
-    public float Score
+    public int Score
     {
         get
         {
@@ -35,18 +39,19 @@ public class Game : MonoBehaviour
         set
         {
             score = value;
-            scoreUI.text = "" + score;
+            scoreUI.GetComponent<Text>().text = "" + score;
         }
     }
-
-    
 
     // Use this for initialization
     void Start ()
     {
         Camera.main.orthographicSize = cameraZoomStart;
-        GameEnded += HideStation;
         GameEnded += PlayStationExplosion;
+        GameEnded += UpdateBestScore;
+        GameEnded += ShowEndScreen;
+        SetBestScore();
+        ShowStartScreen();
     }
 
     // Update is called once per frame
@@ -54,7 +59,13 @@ public class Game : MonoBehaviour
     {
         if (!Game.isOn)
         {
-            if (Input.touchCount > 0)
+            if (Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            {
+                ShowStartScreen();
+                StartCoroutine(ZoomInCamera());
+                Game.isEnded = false;
+            }
+            else if (!Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
                 StartGame();
                 Game.isOn = true;
@@ -74,6 +85,8 @@ public class Game : MonoBehaviour
 
     void StartGame()
     {
+        ShowGameScreen();
+
         int numberOfEnemies = enemies.transform.childCount;
         for (int i = numberOfEnemies - 1; i >= 0; i--)
         {
@@ -87,7 +100,6 @@ public class Game : MonoBehaviour
         }
 
         StartCoroutine(ZoomOutCamera());
-        ShowStation();
         Score = 0;
         StartCoroutine(EnergyBarBehavior.EnergyLoading());
         EnergyBarBehavior.isRegenerationOn = true;
@@ -96,6 +108,7 @@ public class Game : MonoBehaviour
     public static void EndGame()
     {
         Game.isOn = false;
+        Game.isEnded = true;
         GameEnded.Invoke();
     }
 
@@ -123,11 +136,69 @@ public class Game : MonoBehaviour
         stationSprite.SetActive(false);
     }
 
+    void SetBestScore()
+    {
+        if (PlayerPrefs.HasKey("bestgameever"))
+        {
+            bestScore = PlayerPrefs.GetInt("bestgameever");
+        }
+        else
+            bestScore = 0;
+
+        bestScoreUI.GetComponent<Text>().text = "BEST: " + bestScore;
+    }
+
+    void UpdateBestScore()
+    {
+        if (score > bestScore)
+        {
+            bestScore = score;
+            PlayerPrefs.SetInt("bestgameever", score);
+            PlayerPrefs.Save();
+        }
+    }
+
+    void ShowStartScreen()
+    {
+        ShowStation();
+        scoreUI.SetActive(false);
+        bestScoreUI.SetActive(true);
+        energyBarUI.SetActive(false);
+    }
+
+    void ShowGameScreen()
+    {
+        ShowStation();
+        scoreUI.SetActive(true);
+        scoreUI.GetComponent<Text>().alignment = TextAnchor.LowerCenter;
+        bestScoreUI.SetActive(false);
+        energyBarUI.SetActive(true);
+    }
+
+    void ShowEndScreen()
+    {
+        HideStation();
+        scoreUI.SetActive(true);
+        scoreUI.GetComponent<Text>().alignment = TextAnchor.UpperCenter;
+        bestScoreUI.SetActive(true);
+        energyBarUI.SetActive(false);
+    }
+
     IEnumerator ZoomOutCamera()
     {
         while (Camera.main.orthographicSize < cameraZoomGameplay)
         {
             Camera.main.orthographicSize++;
+            yield return null;
+            yield return null;
+        }
+    }
+
+    IEnumerator ZoomInCamera()
+    {
+        while (Camera.main.orthographicSize > cameraZoomStart)
+        {
+            Camera.main.orthographicSize--;
             yield return null;
             yield return null;
         }
