@@ -15,8 +15,11 @@ public class EnergyBarBehavior : MonoBehaviour
         {
             if (value <= 0)
             {
-                Debug.Log("przegranko");
+                if (!Game.IsOn)
+                    return;
+                
                 isRegenerationOn = false;
+                Game.EndGame();
             }
             energy = Mathf.Clamp(value, 0f, 100f);
         }

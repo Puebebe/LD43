@@ -8,6 +8,7 @@ public class EnemyBehavior : MonoBehaviour
 	[SerializeField] GameObject target;
 	[SerializeField] float damage;
 	[SerializeField] float speed;
+    //TODO speed range
 
     // Use this for initialization
     void Start ()

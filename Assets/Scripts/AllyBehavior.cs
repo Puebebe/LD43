@@ -7,7 +7,7 @@ public class AllyBehavior : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] float destroyDistance;
     [SerializeField] GameObject prefab;
-    //[SerializeField] GameObject explosions;
+
 	// Update is called once per frame
 	void Update ()
     {

@@ -15,6 +15,9 @@ public class SpawnEnemies : MonoBehaviour
     // Update is called once per frame
     void Update ()
     {
+        if (!Game.IsOn)
+            return;
+
         if (timer > 0)
             timer -= Time.deltaTime;
         else
