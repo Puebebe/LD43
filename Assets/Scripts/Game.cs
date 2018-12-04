@@ -61,6 +61,12 @@ public class Game : MonoBehaviour
         {
             if (Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
             {
+                int numberOfEnemies = enemies.transform.childCount;
+                for (int i = numberOfEnemies - 1; i >= 0; i--)
+                {
+                    Destroy(enemies.transform.GetChild(i).gameObject);
+                }
+
                 ShowStartScreen();
                 StartCoroutine(ZoomInCamera());
                 Game.isEnded = false;
@@ -86,12 +92,6 @@ public class Game : MonoBehaviour
     void StartGame()
     {
         ShowGameScreen();
-
-        int numberOfEnemies = enemies.transform.childCount;
-        for (int i = numberOfEnemies - 1; i >= 0; i--)
-        {
-            Destroy(enemies.transform.GetChild(i).gameObject);
-        }
 
         int numberOfAllies = allies.transform.childCount;
         for (int i = numberOfAllies - 1; i >= 0; i--)
