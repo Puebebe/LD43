@@ -101,7 +101,7 @@ public class Game : MonoBehaviour
 
     void PlayStationExplosion()
     {
-        //TODO explosion rotation
+        stationExplosion.transform.rotation = stationSprite.transform.rotation;
         stationExplosion.SetActive(true);
         PlayableDirector explosion = stationExplosion.GetComponentInChildren<PlayableDirector>();
         explosion.Play();
