@@ -89,8 +89,8 @@ public class Game : MonoBehaviour
         StartCoroutine(ZoomOutCamera());
         ShowStation();
         Score = 0;
-        //TODO energy loading
-        EnergyBarBehavior.Energy = 100;
+        StartCoroutine(EnergyBarBehavior.EnergyLoading());
+        EnergyBarBehavior.isRegenerationOn = true;
     }
 
     public static void EndGame()

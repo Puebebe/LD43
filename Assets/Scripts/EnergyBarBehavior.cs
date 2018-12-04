@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnergyBarBehavior : MonoBehaviour
 {
     [SerializeField] private float regeneration;
-    private static bool isRegenerationOn = true;
-    public SimpleHealthBar energyBar;
+    public static bool isRegenerationOn = true;
+    [SerializeField] private SimpleHealthBar energyBar;
     private static float energy = 100;
     public static float Energy
     {
@@ -22,6 +22,15 @@ public class EnergyBarBehavior : MonoBehaviour
                 Game.EndGame();
             }
             energy = Mathf.Clamp(value, 0f, 100f);
+        }
+    }
+
+    public static IEnumerator EnergyLoading()
+    {
+        while (energy < 100)
+        {
+            Energy++;
+            yield return null;
         }
     }
 
