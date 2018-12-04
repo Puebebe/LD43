@@ -155,6 +155,7 @@ public class Game : MonoBehaviour
             bestScore = score;
             PlayerPrefs.SetInt("bestgameever", score);
             PlayerPrefs.Save();
+            bestScoreUI.GetComponent<Text>().text = "BEST: " + bestScore;
         }
     }
 
