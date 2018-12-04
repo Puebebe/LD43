@@ -7,13 +7,15 @@ public class EnemyBehavior : MonoBehaviour
 {
 	[SerializeField] GameObject target;
 	[SerializeField] float damage;
-	[SerializeField] float speed;
-    //TODO speed range
+	[SerializeField] float speedMax;
+    [SerializeField] float speedMin;
+    float speed;
 
     // Use this for initialization
     void Start ()
     {
         target = transform.parent.GetComponent<SpawnEnemies>().target;
+        speed = Random.Range(speedMin, speedMax);
 
 		transform.rotation = Quaternion.identity;
 		transform.LookAt(target.transform);
