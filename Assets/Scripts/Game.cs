@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -60,7 +60,7 @@ public class Game : MonoBehaviour
     {
         if (!Game.isOn)
         {
-            if (Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
+            if (Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began && !stationExplosion.activeSelf)
             {
                 int numberOfEnemies = enemies.transform.childCount;
                 for (int i = numberOfEnemies - 1; i >= 0; i--)
