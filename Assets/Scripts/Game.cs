@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,6 +23,7 @@ public class Game : MonoBehaviour
     float timer;
     int cameraZoomStart = 2;
     int cameraZoomGameplay = 17;
+    Coroutine cameraZoom;
 
     public static bool IsOn
     {
@@ -68,7 +69,7 @@ public class Game : MonoBehaviour
                 }
 
                 ShowStartScreen();
-                StartCoroutine(ZoomInCamera());
+                cameraZoom = StartCoroutine(ZoomInCamera());
                 Game.isEnded = false;
             }
             else if (!Game.isEnded && Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began)
@@ -99,6 +100,8 @@ public class Game : MonoBehaviour
             Destroy(allies.transform.GetChild(i).gameObject);
         }
 
+        if (cameraZoom != null)
+            StopCoroutine(cameraZoom);
         StartCoroutine(ZoomOutCamera());
         Score = 0;
         StartCoroutine(EnergyBarBehavior.EnergyLoading());
