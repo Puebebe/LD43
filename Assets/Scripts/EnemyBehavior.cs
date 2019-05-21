@@ -35,6 +35,7 @@ public class EnemyBehavior : MonoBehaviour
         {
             EnergyBarBehavior.Energy -= damage;
             Destroy(gameObject);
+            Handheld.Vibrate();
         }
     }
 }

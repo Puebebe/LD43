@@ -122,6 +122,7 @@ public class Game : MonoBehaviour
         PlayableDirector explosion = stationExplosion.GetComponentInChildren<PlayableDirector>();
         explosion.Play();
         explosion.stopped += StationExploded;
+        Handheld.Vibrate();
     }
 
     private void StationExploded(PlayableDirector pd)
